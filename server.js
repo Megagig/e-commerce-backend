@@ -18,7 +18,7 @@ app.use(
 app.use(bodyParser.json());
 
 //cookie parser
-app.use(cookieParser);
+app.use(cookieParser());
 
 // Importing the routes
 app.use('/api', require('./routes/authRoutes'));
