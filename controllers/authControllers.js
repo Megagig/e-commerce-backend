@@ -33,6 +33,23 @@ class authControllers {
       responseReturn(res, 500, { error: error.message });
     }
   };
+  // End method
+
+  getUser = async (req, res) => {
+    const { id, role } = req;
+    try {
+      if (role === 'admin') {
+        const user = await adminModel.findById(id);
+        responseReturn(res, 200, { userInfo: user });
+      } else {
+        // responseReturn(res, 404, { error: 'User not Found' });
+        console.log('Seller info');
+      }
+    } catch (error) {
+      // responseReturn(res, 500, { error: error.message });
+      console.log(error.message);
+    }
+  }; // End the getuser Method
 }
 
 module.exports = new authControllers();
